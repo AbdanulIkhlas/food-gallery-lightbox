@@ -7,6 +7,10 @@
 }
 
 /*! Style Utama */
+.clear{
+    clear: both;
+}
+
 body{
     font : 18px/36px 'bebas_neuer', 'Arial Narrow', arial, sans-serif; 
     background-color: #414143;
@@ -72,6 +76,116 @@ h1{
     transform: scale(1) rotate(360deg);
 }
 
-.clear{
-    clear: both;
+/*! overlay : background hitam saat lightbox*/
+.overlay{
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 9999;
+    transition: .8s;
+    text-align: center;
+    padding: 100px 0;
 }
+
+.gallery li .overlay img{
+    border-radius: 0;
+    max-height: 100%;
+    box-shadow: 2px 2px 15px #f3d893b7;
+}
+
+.gallery li .overlay:target img{
+    animation: fade 1s;
+}
+
+
+
+/*? menggunakan pseudo class target,  */
+/*? jadi saat di klik href yang ada # maka langusng menuju ke target id yang sama */
+.overlay:target{
+    background-color: rgba(0, 0, 0, 0.7);
+    width: auto;
+    height: auto;
+    bottom: 0;
+    right: 0;
+}
+
+.overlay .close{
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    margin-left: -20px;
+    color: white;
+    text-decoration: none;
+    background-color: #414143;
+    border: 1px solid white;
+    line-height: 15px;
+    padding: 5px;
+    opacity: 0;
+}
+
+.overlay:target .close{
+    animation: slideDownFade .5s .5s forwards; /*? namaAnimation durasi delay <forward : agar tidak kembali ke posisi awal>*/ 
+}
+
+.overlay:target .next,
+.overlay:target .previous{
+    animation: fade .5s .5s forwards; 
+}
+
+/*! Animasi */
+@keyframes zoomAndFade{
+    0%{
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    100%{
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes slideDownFade{
+    0%{
+        opacity: 0;
+        margin-top: -20px;
+    }
+
+    100%{
+        opacity: 1;
+        margin-top: 0;
+    }
+}
+
+@keyframes fade{
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+/*! Navigasi */
+.next, .previous{
+    width: 64px;
+    height: 64px;
+    background-image: url(../img/next.png);
+    background-repeat: no-repeat;
+    position: absolute;
+    text-indent: -9999px;  /*? agar tulisan ke kiri layar menjauh */
+    top: 400px;
+    margin-left: 40px;
+    opacity: 0;
+}
+
+.previous{
+    background-image: url(../img/previous.png);
+    margin-left: -115px;
+}
+
