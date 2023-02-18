@@ -1,6 +1,77 @@
+/*! font */
 @font-face {
-    font-family: 'bebas_neueregular';
-    src: url('../font/bebasneue-regular-webfont.woff') format('woff');
+    font-family: 'bebas_neuer';
+    src: url('../font/bebasneue-bold-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+}
+
+/*! Style Utama */
+body{
+    font : 18px/36px 'bebas_neuer', 'Arial Narrow', arial, sans-serif; 
+    background-color: #414143;
+    color: #f3d893;
+}
+
+h1{
+    font-size: 80px;
+    margin: 50px 0;
+    text-align: center;
+    text-shadow: 2px 1px 1px #36393e;
+    letter-spacing: 2px;
+}
+
+.container{
+    width: 600px;
+    background-color: #f3d893;
+    margin: auto;
+    padding: 20px;
+    color: #414143;
+    box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+.gallery li{
+    width: 120px;
+    height: 120px;
+    /* border-radius: 50%; ? yang bulat baru li */
+    /* overflow: hidden;  ? maka tambahkan hidden agar img jugaikut bulat */
+    border: 5px solid #414143;
+    float: left;
+    margin-right:20.5px;
+    position: relative;
+}
+
+.gallery li,
+.gallery li img,
+.gallery li span{
+    border-radius: 50%;
+}
+
+.gallery li span{
+    display: block;
+    font-size: 25px;
+    width: 120px;
+    height: 120px;
+    background-color: #f3d8934e;
+    position: absolute;
+    top: 0;
+    text-align: center;
+    line-height: 120px;
+    color: black;
+    text-shadow: 1px 1px 1px #ddd;
+    /*? keadaan awal */
+    opacity: 0;
+    transition: .3s;
+    transform: scale(0) rotate(0);
+}
+
+.gallery li a:hover span{
+    /*? keadaan akhir */
+    opacity: 1;
+    transform: scale(1) rotate(360deg);
+}
+
+.clear{
+    clear: both;
 }
